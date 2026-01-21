@@ -1,14 +1,16 @@
 import pandas as pd
 import numpy as np
 import pickle
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-# 1. Load dataset
-df = pd.read_csv("house_prices.csv")  # place dataset in this folder
+# 1. Load dataset (place house_prices.csv in the model folder)
+dataset_path = os.path.join(os.path.dirname(__file__), "house_prices.csv")
+df = pd.read_csv(dataset_path)
 
 # 2. Select features
 features = [
@@ -41,14 +43,15 @@ model.fit(X_train, y_train)
 
 # 7. Evaluation
 y_pred = model.predict(X_test)
-
 print("MAE:", mean_absolute_error(y_test, y_pred))
 print("RMSE:", np.sqrt(mean_squared_error(y_test, y_pred)))
 print("R²:", r2_score(y_test, y_pred))
 
 # 8. Save model and scaler
-with open("house_price_model.pkl", "wb") as f:
+output_path = os.path.join(os.path.dirname(__file__), "house_price_model.pkl")
+with open(output_path, "wb") as f:
     pickle.dump({"model": model, "scaler": scaler}, f)
 
 print("✅ House price model saved successfully")
+
 

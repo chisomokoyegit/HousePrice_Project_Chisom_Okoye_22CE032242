@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__)
 
 # Load model
-with open("model/house_price_model.pkl", "rb") as f:
+model_path = os.path.join("model", "house_price_model.pkl")
+with open(model_path, "rb") as f:
     data = pickle.load(f)
     model = data["model"]
     scaler = data["scaler"]
@@ -38,6 +40,8 @@ def predict():
         return render_template("index.html", prediction=f"Error: {e}")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Render provides this environment variable
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 
