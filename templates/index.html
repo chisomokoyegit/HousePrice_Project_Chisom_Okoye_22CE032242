@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h2>🏠 House Price Prediction</h2>
+
+    <form method="POST" action="/predict">
+        <input name="OverallQual" placeholder="Overall Quality (1–10)" required>
+        <input name="GrLivArea" placeholder="Living Area (sq ft)" required>
+        <input name="TotalBsmtSF" placeholder="Basement Area" required>
+        <input name="GarageCars" placeholder="Garage Cars" required>
+        <input name="FullBath" placeholder="Full Bathrooms" required>
+        <input name="YearBuilt" placeholder="Year Built" required>
+        <button type="submit">Predict Price</button>
+    </form>
+
+    <h3>{{ prediction }}</h3>
+</div>
+</body>
+</html>
