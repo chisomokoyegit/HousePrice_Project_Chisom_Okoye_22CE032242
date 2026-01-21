@@ -2,6 +2,7 @@ Name: Chisom Okoye
 Matric Number: 22CE032242
 Machine Learning Algorithm Used: Random Forest Regressor
 Model persistence method used: Pickle
-Live URL of hosted application: (after deployment)
-GitHub repository link: (paste GitHub link)
+Live URL of hosted application: (leave blank for now if not deployed)
+GitHub repository link: https://github.com/chisomokoyegit/HousePrice_Project_Chisom_Okoye_22CE032242
+
 
